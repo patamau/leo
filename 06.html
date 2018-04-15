@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+	<script>
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+		ev.target.style.backgroundColor = 'white';
+		ev.target.parentElement.style.backgroundColor = 'lightgrey';
+	}
+
+	function drop(ev, check) {
+		console.log(ev.target.tagName);
+		var target = ev.target;
+		if(target.tagName != 'TD'){
+			var parent = target.parentElement
+			if(parent.tagName != 'TD'){
+				return false;
+			}
+			target = parent;
+		}
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		if(data == check){
+			target.style.backgroundColor = 'green';
+		}else{
+			target.style.backgroundColor = 'red';
+		}
+		target.appendChild(document.getElementById(data));
+	}
+	</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 70%;
+		max-width: 70%;
+		margin: auto;
+	}
+	td.cell{
+		width: 50%;
+		height: 10%;
+		text-align: center;
+	}
+	tr.separator{
+		height:100px;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		margin: auto;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	td.drop-area{
+		padding: 10px;
+		margin: 10px;
+		height: 50px;
+		background-color: lightgrey;
+	}
+	div.draggable{
+		border: 1px solid silver;
+		font-size: 26px;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			}else{
+				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h1 class="text-uppercase text-center">
+					Scegli le parole gentili che anche tu puoi usare in questi momenti
+				</h1>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td style="width: 30%" class="cell align-bottom">
+							<img class="cell-img" src="assets/images/bambini_abbraccio.jpg"/>
+						</td>
+						<td/>
+						<td style="width: 30%" class="cell align-bottom">
+							<img class="cell-img" src="assets/images/bambino_ginocchio.jpg"/>
+						</td>
+						<td/>
+						<td style="width: 30%" class="cell align-bottom">
+							<img class="cell-img" src="assets/images/bambini_tavola.jpg"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 30%" class="cell drop-area" id="drop3" ondrop="drop(event, 'drag3')" ondragover="allowDrop(event)">
+						</td>
+						<td/>
+						<td style="width: 30%" class="cell drop-area" id="drop1" ondrop="drop(event, 'drag1')" ondragover="allowDrop(event)">
+						</td>
+						<td/>
+						<td style="width: 30%" class="cell drop-area" id="drop2" ondrop="drop(event, 'drag2')" ondragover="allowDrop(event)">
+						</td>
+					</tr>
+					<tr class="separator">
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+					</tr>
+					<tr>
+						<td style="width: 30%" class="cell">
+							<div id="drag1" class="draggable" draggable="true"
+ondragstart="drag(event)" >- Ti sei fatto male?</div>
+						</td>
+						<td/>
+						<td style="width: 30%" class="cell">
+							<div id="drag2" class="draggable" draggable="true"
+ondragstart="drag(event)" >- Buon appetito!<br/>- Grazie!</div>
+						</td>
+						<td/>
+						<td style="width: 30%" class="cell">
+							<div id="drag3" class="draggable" draggable="true"
+ondragstart="drag(event)" >- Ti voglio bene!</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='07.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
