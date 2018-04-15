@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 70%;
+		max-width: 70%;
+		margin: auto;
+	}
+	td.cell{
+		width: 30%;
+		height: 10%;
+		border: 1px solid silver;
+		text-align: center;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		max-width: 30%;
+		margin: auto;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			}else{
+				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h1 class="text-uppercase text-center">
+					Aiuta Leo a riconoscere gli oggetti e il loro ambiente!
+				</h1>
+				<h4 class="text-uppercase text-center">
+					Segna il luogo dove puoi trovare questi oggetti
+				</h1>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td>
+							
+						</td>
+						<td style="width: 30%" class="cell align-bottom">
+							<img class="cell-img" src="assets/images/casa.jpg"/>
+							<h4 class="text-uppercase text-center">CASA</h4>
+						</td>
+						<td style="width: 30%" class="cell align-bottom">
+							<img class="cell-img" src="assets/images/scuola.jpg"/>
+							<h4 class="text-uppercase text-center">SCUOLA</h4>
+						</td>
+					</tr>
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/quaderno.jpg"/>
+						</td>
+						<td class="cell" onclick="validate(this, true);">
+						</td>
+						<td class="cell" onclick="validate(this, true);">
+						</td>
+					</tr>
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/matite.jpg"/>
+						</td>
+						<td class="cell" onclick="validate(this, true);">
+						</td>
+						<td class="cell" onclick="validate(this, true);">
+						</td>
+					</tr>
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/aspirapolvere.jpg"/>
+						</td>
+						<td class="cell" onclick="validate(this, true);">
+						</td>
+						<td class="cell" onclick="validate(this, false);">
+						</td>
+					</tr>
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/lavagna.jpg"/>
+						</td>
+						<td class="cell" onclick="validate(this, false);">
+						</td>
+						<td class="cell" onclick="validate(this, true);">
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/gioco_costruzioni.jpg"/>
+						</td>
+						<td class="cell" onclick="validate(this, true);">
+						</td>
+						<td class="cell" onclick="validate(this, false);">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='03.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
