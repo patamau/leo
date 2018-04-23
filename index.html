@@ -9,22 +9,57 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <script src="js/bootstrap.min.js"></script>
+	<style>
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 70%;
+		max-width: 70%;
+	}
+	img.main-img {
+		display: block;
+		max-height: 70%;
+		max-width: 90%;
+	}
+	td.cell{
+		width: 30%;
+		height: 30%;
+	}
+	</style>
 </head>
 <body>
-    <div class="container-fluid text-center">
-        <div class="row content m-4">
-            <div class="col-sm-4 sidenav">
-            </div>
-            <div class="col-sm-4">
-                <h1 class="text-uppercase">A Scuola con Leo</h1>
-                <img src="assets/images/leo.jpg" class="img-responsive">
-            </div>
-            <div class="col-sm-4 sidenav">
-            </div>
-        </div>
-    </div>
-    <footer class="container-fluid text-center">
-        <p><button type="button" class="btn btn-default btn-success btn-block btn-lg" onclick="location.href='01.html';">Iniziamo <i class="fa fa-arrow-right"></i></button></p>
-    </footer>
+	<table width="100%" height="100%">
+		<tr>
+			<td>
+				<h1 class="text-uppercase text-center">
+					A Scuola con Leo
+				</h1>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table>
+					<tr>
+						<td style="width: 50%" align="center">
+							<img class="main-img " src="assets/images/leo.jpg">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width="50%">
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='01.html'">Iniziamo <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
