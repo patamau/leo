@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 30%;
+		max-width: 50%;
+	}
+	td.cell{
+		width: 30%;
+		height: 30%;
+	}
+	button.btn-forward{
+		width: 50%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(!valid){
+				component.style.display = 'none';
+			}
+		}
+	</script>
+	<table width="100%" height="100%"
+		<tr>
+			<td>
+				<h1 class="text-uppercase text-center">
+					LEO HA RIMESSO IN ORDINE I SUOI GIOCHI MA NEL FARLO HA SCOPERTO UN OGGETTO CHE NON APPARTIENE A QUELL’INSIEME.<br/> LO VEDI ANCHE TU?
+				</h1>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table>
+					<tr>
+						<td class="cell" align="right"><img class="cell-img" src="assets/images/frutta.jpg"/></td>
+						<td class="cell" align="left"><img onclick="validate(this, false);" class="cell-img" src="assets/images/sedia.jpg"/></td>
+					</tr>
+					<tr>
+						<td><br/></td>
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell" align="right"><img class="cell-img" src="assets/images/vestiti.jpg"/></td>
+						<td class="cell" align="left"><img onclick="validate(this, false);" class="cell-img" src="assets/images/cavallo.jpg"/></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><br/></td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width="50%">
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='18.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

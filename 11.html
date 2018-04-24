@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 40%;
+		max-width: 90%;
+		margin: auto;
+	}
+	td.cell{
+		width: 10%;
+		height: 10%;
+		border-bottom: 1px solid silver;
+		text-align: center;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		max-width: 30%;
+		margin: auto;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	.cell input{
+		font-size: 16px;
+		text-transform: uppercase;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			console.log(component.value);
+			var value = component.value.trim().toLowerCase();
+			if(value.length==0){
+				component.style.border = '0px silver solid';
+			}else if(value == valid){
+				component.style.border = '2px green solid';
+			}else{
+				component.style.border = '2px red solid';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h3 class="text-uppercase text-center">
+					CONOSCI BENE LA TUA SCUOLA?
+				</h3>
+				<h3 class="text-uppercase text-center">
+					LEO ANCORA NON CONOSCE BENE IL NOME DEI DIVERSI SPAZI E LA LORO FUNZIONE.
+				</h3>
+				<h5 class="text-uppercase text-center">
+					RICORDI LA NOSTRA VISITA ALLA SCUOLA? ANDIAMO INSIEME A RIVEDERE I SUOI AMBIENTI?
+				</h5>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/aula.jpg"/>
+						</td>
+						<td class="cell">
+							<input type="text" class="input" placeholder="..." autofocus onkeyup="validate(this, 'aula')"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/palestra.jpg"/>
+						</td>
+						<td class="cell">
+							<input type="text" class="input" placeholder="..." onkeyup="validate(this, 'palestra')"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/mensa.jpg"/>
+						</td>
+						<td class="cell">
+							<input type="text" class="input" placeholder="..." onkeyup="validate(this, 'mensa')"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/bagni.jpg"/>
+						</td>
+						<td class="cell">
+							<input type="text" class="input" placeholder="..." onkeyup="validate(this, 'bagni')"/>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="cell">
+							<img class="cell-img" src="assets/images/cortile.jpg"/>
+						</td>
+						<td class="cell">
+							<input type="text" class="input" placeholder="..." onkeyup="validate(this, 'cortile')"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='12.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

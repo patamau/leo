@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+	<script>
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+		//ev.target.style.backgroundColor = 'white';
+		//ev.target.parentElement.style.backgroundColor = 'lightgrey';
+	}
+
+	function drop(ev, check) {
+		console.log(ev.target.tagName);
+		var target = ev.target;
+		if(target.tagName != 'TD'){
+			var parent = target.parentElement;
+			if(parent.tagName != 'TD'){
+				target = parent;
+				parent = target.parentElement;
+				if(parent.tagName != 'TD'){
+					return false;
+				}
+			}
+			target = parent;
+		}
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		console.log(data);
+		target.appendChild(document.getElementById(data));
+	}
+	</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 40%;
+		max-width: 40%;
+		margin: auto;
+	}
+	td.cell{
+		width: 50%;
+		height: 10%;
+		text-align: center;
+	}
+	tr.separator{
+		height:100px;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		margin: auto;
+	}
+	.draggable img{
+		width: 10%;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	td.drop-area{
+		padding: 10px;
+		margin: 10px;
+		height: 50px;
+		//background-color: lightgrey;
+	}
+	div.draggable{
+		font-size: 26px;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			}else{
+				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h2 class="text-uppercase text-center">
+					è AUTUNNO. LEO ADORA LE CASTAGNE E OGGI NE HA RIEMPITO DUE CESTINI. ARRIVATO A CASA HA VISTO CHE I CESTINI ERANO EQUIPOTENTI.
+				</h2>
+				<h4 class="text-uppercase text-center">POSIZIONA LE CASTAGNE NEL MODO CORRETTO.</h4>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td/>
+						<td style="width: 20%" class="drop-area" id="drop1" ondrop="drop(event, 'drag1')" ondragover="allowDrop(event)">
+							<img width='100%' src="assets/images/cestino.jpg"/>
+						</td>
+						<td/>
+						<td style="width: 20%" class="drop-area" id="drop2" ondrop="drop(event, 'drag2')" ondragover="allowDrop(event)">
+							<img width='100%' src="assets/images/cestino.jpg"/>
+						</td>
+						<td/>
+					</tr>
+					<tr class="separator">
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+					</tr>
+					<tr>
+						<td style="width: 20%" class="cell">
+							<div id="drag1" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag1"/></div>
+						</td>
+						<td style="width: 20%" class="cell">
+							<div id="drag2" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag2"/></div>
+						</td>
+						<td style="width: 20%" class="cell">
+							<div id="drag3" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag3"/></div>
+						</td>
+						<td  style="width: 20%" class="cell">
+							<div id="drag4" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag4"/></div>
+						</td>
+						<td style="width: 20%" class="cell">
+							<div id="drag5" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag5"/></div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 20%" class="cell">
+							<div id="drag6" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag6"/></div>
+						</td>
+						<td style="width: 20%" class="cell">
+							<div id="drag7" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag7"/></div>
+						</td>
+						<td style="width: 20%" class="cell">
+							<div id="drag8" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag8"/></div>
+						</td>
+						<td  style="width: 20%" class="cell">
+							<div id="drag9" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag9"/></div>
+						</td>
+						<td style="width: 20%" class="cell">
+							<div id="drag10" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/castagna.jpg" id="drag10"/></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width=100%>
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-warning btn-block btn-lg btn-forward" onclick="location.href='15.html'">Rinforzo <i class="fa fa-check"></i></button>
+						</td>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='16.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
