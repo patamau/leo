@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+	<script>
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+		ev.target.style.backgroundColor = 'white';
+		ev.target.parentElement.style.backgroundColor = 'lightgrey';
+	}
+
+	function drop(ev, check) {
+		console.log(ev.target.tagName);
+		var target = ev.target;
+		if(target.tagName != 'TD'){
+			var parent = target.parentElement;
+			if(parent.tagName != 'TD'){
+				target = parent;
+				parent = target.parentElement;
+				if(parent.tagName != 'TD'){
+					return false;
+				}
+			}
+			target = parent;
+		}
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		console.log(data);
+		target.appendChild(document.getElementById(data));
+	}
+	</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 70%;
+		max-width: 70%;
+		margin: auto;
+	}
+	.grid td{
+		text-align: center;
+		font-size: 30px;
+	}
+	td.cell{
+		height: 10%;
+		text-align: center;
+	}
+	tr.separator{
+		height:20px;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		margin: auto;
+		width: 80%;
+	}
+	.cell img{
+		width: 30%;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	td.drop-area{
+		padding: 10px;
+		margin: 10px;
+		height: 50px;
+		background-color: lightgrey;
+		border: 1px solid black
+	}
+	div.draggable{
+		border: 1px solid silver;
+		font-size: 26px;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			}else{
+				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h2 class="text-uppercase text-center">
+					COMPLETA LE SEQUENZE CON I NUMERI MANCANTI
+				</h2>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td>0</td>
+						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag1-1')" ondragover="allowDrop(event)"></td>
+						<td>2</td>
+						<td class="cell drop-area" id="drop1" ondrop="drop(event, 'drag1-3')" ondragover="allowDrop(event)"></td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag1-4')" ondragover="allowDrop(event)"></td>
+						<td>5</td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag1-6')" ondragover="allowDrop(event)"></td>
+						<td>7</td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag1-8')" ondragover="allowDrop(event)"></td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag1-9')" ondragover="allowDrop(event)"></td>
+					</tr>
+					<tr class="separator">
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell">
+							<div id="drag1-3" class="draggable" draggable="true"
+ondragstart="drag(event)" >3</div>
+						</td>
+						<td class="cell">
+							<div id="drag1-1" class="draggable" draggable="true"
+ondragstart="drag(event)" >1</div>
+						</td>
+						<td class="cell">
+							<div id="drag1-4" class="draggable" draggable="true"
+ondragstart="drag(event)" >4</div>
+						</td>
+						
+						<td class="cell">
+							<div id="drag1-8" class="draggable" draggable="true"
+ondragstart="drag(event)" >8</div>
+						</td>
+						
+						<td class="cell">
+							<div id="drag1-9" class="draggable" draggable="true"
+ondragstart="drag(event)" >9</div>
+						</td>
+						
+						<td class="cell">
+							<div id="drag1-6" class="draggable" draggable="true"
+ondragstart="drag(event)" >6</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td class="cell drop-area" id="drop8" ondrop="drop(event, 'drag2-8')" ondragover="allowDrop(event)"></td>
+						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag2-9')" ondragover="allowDrop(event)"></td>
+						<td>10</td>
+						<td class="cell drop-area" id="drop1" ondrop="drop(event, 'drag2-11')" ondragover="allowDrop(event)"></td>
+						<td>12</td>
+						<td>13</td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag2-14')" ondragover="allowDrop(event)"></td>
+						<td>15</td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag2-16')" ondragover="allowDrop(event)"></td>
+						<td>17</td>
+					</tr>
+					<tr class="separator">
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell">
+							<div id="drag2-11" class="draggable" draggable="true"
+ondragstart="drag(event)" >11</div>
+						</td>
+						<td class="cell">
+							<div id="drag2-8" class="draggable" draggable="true"
+ondragstart="drag(event)" >8</div>
+						</td>
+						<td class="cell">
+							<div id="drag2-9" class="draggable" draggable="true"
+ondragstart="drag(event)" >9</div>
+						</td>
+						<td class="cell">
+							<div id="drag2-16" class="draggable" draggable="true"
+ondragstart="drag(event)" >16</div>
+						</td>
+						<td class="cell">
+							<div id="drag2-14" class="draggable" draggable="true"
+ondragstart="drag(event)" >14</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td>11</td>
+						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag3-12')" ondragover="allowDrop(event)"></td>
+						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag3-13')" ondragover="allowDrop(event)"></td>
+						<td>14</td>
+						<td class="cell drop-area" id="drop1" ondrop="drop(event, 'drag3-15')" ondragover="allowDrop(event)"></td>
+						<td>16</td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag3-17')" ondragover="allowDrop(event)"></td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag3-18')" ondragover="allowDrop(event)"></td>
+						<td>19</td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag3-20')" ondragover="allowDrop(event)"></td>
+					</tr>
+					<tr class="separator">
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell">
+							<div id="drag3-13" class="draggable" draggable="true"
+ondragstart="drag(event)" >13</div>
+						</td>
+						<td class="cell">
+							<div id="drag3-15" class="draggable" draggable="true"
+ondragstart="drag(event)" >15</div>
+						</td>
+						<td class="cell">
+							<div id="drag3-18" class="draggable" draggable="true"
+ondragstart="drag(event)" >18</div>
+						</td>
+						
+						<td class="cell">
+							<div id="drag3-20" class="draggable" draggable="true"
+ondragstart="drag(event)" >20</div>
+						</td>
+						
+						<td class="cell">
+							<div id="drag3-12" class="draggable" draggable="true"
+ondragstart="drag(event)" >12</div>
+						</td>
+						
+						<td class="cell">
+							<div id="drag3-17" class="draggable" draggable="true"
+ondragstart="drag(event)" >17</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width=100%>
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='28.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

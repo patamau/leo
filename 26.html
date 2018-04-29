@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+	<script>
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+		ev.target.style.backgroundColor = 'white';
+	}
+
+	function drop(ev, check) {
+		console.log(ev.target.tagName);
+		var target = ev.target;
+		if(target.tagName != 'TD'){
+			var parent = target.parentElement;
+			if(parent.tagName != 'TD'){
+				target = parent;
+				parent = target.parentElement;
+				if(parent.tagName != 'TD'){
+					return false;
+				}
+			}
+			target = parent;
+		}
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		if(data == check){
+			target.style.backgroundColor = 'green';
+		}else{
+			target.style.backgroundColor = 'red';
+		}
+		target.appendChild(document.getElementById(data));
+	}
+	</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 70%;
+		max-width: 70%;
+		margin: auto;
+	}
+	td.cell{
+		height: 10%;
+		text-align: center;
+	}
+	.separator td{
+		font-size: 10px;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		margin: auto;
+	}
+	.cell img{
+		max-width: 80%;
+		max-height: 25%;
+		}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	td.drop-area{
+		padding: 10px;
+		margin: 10px;
+		height: 50px;
+		background-color: lightgrey;
+	}
+	td {
+		font-size: 24px;
+	}
+	div.draggable{
+		border: 1px solid silver;
+		font-size: 45px;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			}else{
+				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h2 class="text-uppercase text-center">
+					Leo ha volute numerare le uova di Pasqua da 0 a 20 ma non ricorda tutti i numeri.
+				</h2>
+				<h3 class="text-uppercase text-center">
+					Lo vuoi aiutare?
+				</h3>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table style="width: 100%">
+					<tr>
+						<td>
+							<table class="grid">
+								<tr>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+								</tr>
+								<tr>
+									<td align="center">
+										0
+									</td>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									
+									<td align="center">
+										10
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table class="grid">
+								<tr>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+									<td class="cell align-bottom">
+										<img src="assets/images/uovo.jpg"/>
+									</td>
+								</tr>
+								<tr>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									<td align="center">
+										15
+									</td>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									<td align="center">
+										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+									</td>
+									<td align="center">
+										20
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			<tr>
+			<td align="center">
+				<table width=100%>
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-warning btn-block btn-lg btn-forward" onclick="location.href='27.html'">Rinforzo <i class="fa fa-check"></i></button>
+						</td>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='28.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

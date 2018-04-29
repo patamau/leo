@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 70%;
+		max-width: 70%;
+		margin: auto;
+	}
+	td.cell{
+		width: 10%;
+		height: 10%;
+		text-align: center;
+	}
+	tr.separator{
+		height:100px;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	img {
+		max-height: 40%;
+	}
+	table.grid{
+		margin: auto;
+	}
+	.cell img{
+		max-width: 100%;
+		max-height: 30%;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	td.drop-area{
+		padding: 10px;
+		margin: 10px;
+		height: 50px;
+		background-color: lightgrey;
+	}
+	div.draggable{
+		border: 1px solid silver;
+		font-size: 26px;
+		float: left;
+		width: 10%;
+	}
+	table.narrow{
+		width: 15%;
+		font-size: 40px;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			console.log(component.value);
+			var value = component.value.trim().toLowerCase();
+			if(value.length==0){
+				component.style.border = '1px silver solid';
+			}else if(value == valid){
+				component.style.border = '2px green solid';
+			}else{
+				component.style.border = '2px red solid';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h2 class="text-uppercase text-center">
+					LA BEFANA HA PORTATO A LEO 8 CARAMELLE.<br/>LUI NE HA MANGIATE SUBITO 3.
+				</h2>
+				<h3 class="text-uppercase text-center">
+					QUANTE CARAMELLE SONO RIMASTE A LEO?
+				</h3>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<img src="assets/images/caramella.jpg"/>
+				<img src="assets/images/caramella.jpg"/>
+				<img src="assets/images/caramella.jpg"/>
+				<img src="assets/images/caramella.jpg"/>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<img src="assets/images/caramella.jpg"/>
+				<img src="assets/images/caramella.jpg"/>
+				<img src="assets/images/caramella.jpg"/>
+				<img src="assets/images/caramella.jpg"/>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table class="narrow">
+					<tr>
+						<td style="width: 50%" class="cell align-bottom">
+							8
+						</td>
+						<td>
+							-
+						</td>
+						<td style="width: 50%" class="cell align-bottom">
+							3
+						</td>
+						
+						<td style="width: 50%" class="cell align-bottom">
+							=
+						</td>
+						
+						<td style="width: 50%" class="cell align-bottom">
+							<input type="text" maxlength="1" size="1" placeholder="?" onkeyup="validate(this, '5')"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><br/></td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width=100%>
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-warning btn-block btn-lg btn-forward" onclick="location.href='23.html'">Rinforzo <i class="fa fa-check"></i></button>
+						</td>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='24.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

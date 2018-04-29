@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+	<script>
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+	}
+
+	function drop(ev, check) {
+		console.log(ev.target.tagName);
+		var target = ev.target;
+		if(target.tagName != 'TD'){
+			var parent = target.parentElement;
+			if(parent.tagName != 'TD'){
+				target = parent;
+				parent = target.parentElement;
+				if(parent.tagName != 'TD'){
+					return false;
+				}
+			}
+			target = parent;
+		}
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		console.log(data);
+		target.innerHTML='';
+		target.appendChild(document.getElementById(data).cloneNode(true));
+	}
+	</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 70%;
+		max-width: 70%;
+		margin: auto;
+	}
+	.grid td{
+		text-align: center;
+		font-size: 30px;
+	}
+	td.cell{
+		height: 10%;
+		text-align: center;
+	}
+	tr.separator{
+		height:20px;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		margin: auto;
+		width: 80%;
+	}
+	.cell img{
+		max-width: 100px;
+		max-height: 100px;
+		margin-right: 20px;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	td.drop-area{
+		margin: 10px;
+		height: 50px;
+		width: 50px;
+	}
+	div.draggable{
+		border: 1px solid silver;
+		font-size: 26px;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			}else{
+				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h2 class="text-uppercase text-center">
+					INIZIA CON...UNA VOCALE
+				</h2>
+				<h4 class="text-center">
+					Osserva i disegni, leggi con Leo le vocali e collega ogni parola alla sua iniziale; poi completa.
+				</h4>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/aereo.jpg"></td>
+									<td class="drop-area" id="dropA" ondrop="drop(event, 'dragA')" ondragover="allowDrop(event)">_</td>
+									<td>EREO</td>
+							</tr></table>
+						</td>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/onda.jpg"></td>
+									<td class="drop-area" id="dropA" ondrop="drop(event, 'dragA')" ondragover="allowDrop(event)">_</td>
+									<td>NDA</td>
+							</tr></table>
+						</td>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/isola.jpg"></td>
+									<td class="drop-area" id="dropA" ondrop="drop(event, 'dragA')" ondragover="allowDrop(event)">_</td>
+									<td>SOLA</td>
+							</tr></table>
+						</td>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/uccello.jpg"></td>
+									<td class="drop-area" id="dropA" ondrop="drop(event, 'dragA')" ondragover="allowDrop(event)">_</td>
+									<td>CCELLO</td>
+							</tr></table>
+						</td>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/ape.jpg"></td>
+									<td class="drop-area" id="dropA" ondrop="drop(event, 'dragA')" ondragover="allowDrop(event)">_</td>
+									<td>PE</td>
+							</tr></table>
+						</td>
+					</tr>
+					<tr class="separator">
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell">
+							<div id="dragA" class="draggable" draggable="true"
+ondragstart="drag(event)" >A</div>
+						</td>
+						<td class="cell">
+							<div id="dragE" class="draggable" draggable="true"
+ondragstart="drag(event)" >E</div>
+						</td>
+						<td class="cell">
+							<div id="dragI" class="draggable" draggable="true"
+ondragstart="drag(event)" >I</div>
+						</td>
+						<td class="cell">
+							<div id="dragO" class="draggable" draggable="true"
+ondragstart="drag(event)" >O</div>
+						</td>
+						<td class="cell">
+							<div id="dragU" class="draggable" draggable="true"
+ondragstart="drag(event)" >U</div>
+						</td>
+					</tr>
+					<tr class="separator">
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/indiano.jpg"></td>
+									<td class="drop-area" id="dropI" ondrop="drop(event, 'dragI')" ondragover="allowDrop(event)">_</td>
+									<td>NDIANO</td>
+							</tr></table>
+						</td>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/erba.jpg"></td>
+									<td class="drop-area" id="dropE" ondrop="drop(event, 'dragE')" ondragover="allowDrop(event)">_</td>
+									<td>RBA</td>
+							</tr></table>
+						</td>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/elicottero.jpg"></td>
+									<td class="drop-area" id="dropE" ondrop="drop(event, 'dragE')" ondragover="allowDrop(event)">_</td>
+									<td>LICOTTERO</td>
+							</tr></table>
+						</td>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/uva.jpg"></td>
+									<td class="drop-area" id="dropU" ondrop="drop(event, 'dragU')" ondragover="allowDrop(event)">_</td>
+									<td>VA</td>
+							</tr></table>
+						</td>
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/orso.jpg"></td>
+									<td class="drop-area" id="dropO" ondrop="drop(event, 'dragO')" ondragover="allowDrop(event)">_</td>
+									<td>RSO</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width=100%>
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-warning btn-block btn-lg btn-forward" onclick="location.href='33.html'">Rinforzo <i class="fa fa-check"></i></button>
+						</td>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='34.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
