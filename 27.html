@@ -30,7 +30,13 @@
 		}
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
-		console.log(data);
+		
+		if(data == check){
+			target.style.backgroundColor = 'green';
+		}else{
+			target.style.backgroundColor = 'red';
+		}
+		target.appendChild(document.getElementById(dat
 		target.appendChild(document.getElementById(data));
 	}
 	</script>

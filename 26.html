@@ -99,10 +99,14 @@
 <body>
 	<script>
 		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			
+			var value = component.value.trim().toLowerCase();
+			if(value.length==0){
+				component.style.border = '1px silver solid';
+			}else if(value == valid){
+				component.style.border = '2px green solid';
 			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+				component.style.border = '2px red solid';
 			}
 		}
 	</script>
@@ -163,39 +167,39 @@
 										0
 									</td>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '1')"/>
 									</td>
 									
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '2')"/>
 									</td>
 									
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '3')"/>
 									</td>
 									
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '4')"/>
 									</td>
 									
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '5')"/>
 									</td>
 									
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '6')"/>
 									</td>
 									
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '7')"/>
 									</td>
 									
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '8')"/>
 									</td>
 									
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '9')"/>
 									</td>
 									
 									<td align="center">
@@ -242,31 +246,31 @@
 								</tr>
 								<tr>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '11')"/>
 									</td>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '12')"/>
 									</td>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '13')"/>
 									</td>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '14')"/>
 									</td>
 									<td align="center">
 										15
 									</td>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '16')"/>
 									</td>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '17')"/>
 									</td>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '18')"/>
 									</td>
 									<td align="center">
-										<input type="text" size="1" maxlength="2" style="text-align:center"/>
+										<input type="text" size="1" maxlength="2" style="text-align:center" onkeyup="validate(this, '19')"/>
 									</td>
 									<td align="center">
 										20
