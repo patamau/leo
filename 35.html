@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	h1 {
+		margin-top: 15px;
+	}
+	.vignetta img {
+		display: block;
+		max-height: 50%;
+		max-width: 50%;
+	}
+	img.main-img {
+		display: block;
+		max-height: 50%;
+		max-width: 90%;
+	}
+	td.cell{
+		width: 30%;
+		height: 30%;
+		font-size: 50px;
+	}
+	button.btn-forward{
+		width: 60%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	tr.separator{
+		height:20px;
+	}
+	.vignetta {
+		border: 1px solid black; 
+		width: 24%;
+		text-align: left;
+		font-size: 20px;
+		padding: 5px;
+	}
+	.vignetta img{
+		vertical-align: bottom;
+		margin: auto;
+	}
+	.domande{
+		font-size: 20px;
+	}
+	.domande img{
+		max-width: 70%;
+		max-height: 60%;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.style.borderWidth = '5px';
+				component.style.borderColor = 'green';
+				component.style.borderStyle = 'solid';
+			}else{
+				component.style.borderWidth = '5px';
+				component.style.borderColor = 'red';
+				component.style.borderStyle = 'dotted';
+			}
+		}
+	</script>
+	<table width="80%" height="100%" align="center">
+		<tr>
+			<td>
+				<h1 class="text-uppercase text-center">
+					LEGGO UNA STORIA
+				</h1>
+				<h3 class="text-center">
+					Osserva i disegni e leggi la storia preferita di Leo
+				</h3>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table style="width: 100%">
+					<tr>
+						<td style="width: 90%" align="center">
+							<table style="width: 100%"
+								<tr>
+									<td class="vignetta"><img src="assets/images/mamma_cucina.jpg"></td>
+									<td/>
+									<td class="vignetta"><img src="assets/images/titti_mangia.jpg"></td>
+									<td/>
+									<td class="vignetta"><img src="assets/images/mamma_arrabbiata.jpg"></td>
+									<td/>
+									<td class="vignetta"><img src="assets/images/titti_seduto.jpg"></td>
+								</tr>
+								<tr class="separator">
+									<td class="vignetta">
+									LA MAMMA PREPARA IN PADELLA LA PASTA AL POMODORO
+									</td>
+									<td/>
+									<td class="vignetta">
+									ARRIVA TITTI, PRENDE LA PADELLA E LA PORTA NELLA SUA TANA
+									</td>
+									<td/>
+									<td class="vignetta">
+									LA MAMMA URLA: - NON SI FA!
+									</td>
+									<td/>
+									<td class="vignetta">
+									TITTI PENSA: “NON LO FAR&Ograve; PI&Ugrave;"
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr class="separator">
+			<td/>
+		</tr>
+		<tr>
+			<td class="domande">
+				Seleziona i disegni giusti:
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="domande">
+					<tr>
+						<td>
+							<ul>
+							<li>La mamma prepara...
+							</ul>
+						</td>
+						<td>
+							<img onclick="validate(this, false);" src="assets/images/yogurt.jpg"/>
+						</td>
+						<td>
+							<img onclick="validate(this, false);" src="assets/images/pizza.jpg"/>
+						</td>
+						<td>
+							<img onclick="validate(this, true);" src="assets/images/pasta.jpg"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+							<li>Titti &egrave; un...
+							</ul>
+						</td>
+						<td>
+							<img onclick="validate(this, false);" src="assets/images/gallo.jpg"/>
+						</td>
+						<td>
+							<img onclick="validate(this, false);" src="assets/images/maiale.jpg"/>
+						</td>
+						<td>
+							<img onclick="validate(this, true);" src="assets/images/topo.jpg"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width="50%">
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-warning btn-block btn-lg btn-forward" onclick="location.href='36.html'">Rinforzo <i class="fa fa-check"></i></button>
+						</td>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='37.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

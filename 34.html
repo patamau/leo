@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+	<script>
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+		ev.target.style.backgroundColor = 'white';
+		ev.target.parentElement.style.backgroundColor = 'lightgrey';
+	}
+
+	function drop(ev, check) {
+		console.log(ev.target.tagName);
+		var target = ev.target;
+		if(target.tagName != 'TD'){
+			var parent = target.parentElement;
+			if(parent.tagName != 'TD'){
+				target = parent;
+				parent = target.parentElement;
+				if(parent.tagName != 'TD'){
+					return false;
+				}
+			}
+			target = parent;
+		}
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		console.log(data);
+		target.appendChild(document.getElementById(data));
+	}
+	</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 50%;
+		max-width: 50%;
+		margin: auto;
+	}
+	.grid td{
+		text-align: center;
+		font-size: 22px;
+	}
+	td.cell{
+		height: 10%;
+		text-align: center;
+	}
+	tr.separator{
+		height:20px;
+	}
+	input{
+		border: 0;
+		text-transform: uppercase;
+		color: blue;
+		font-family: 'Courier New', Courier, monospace;
+		letter-spacing: 4px;
+		font-size: 28px;
+		font-weight: 600;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		margin: auto;
+		width: 80%;
+	}
+	img{
+		max-width: 60%;
+		max-height: 70%;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	td.drop-area{
+		padding: 10px;
+		margin: 10px;
+		height: 50px;
+		background-color: lightgrey;
+		border: 1px solid black
+	}
+	div.draggable{
+		border: 1px solid silver;
+		font-size: 26px;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			}else{
+				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+			}
+		}
+		function moveNext(currentElement){
+			var curIndex = currentElement.tabIndex; //get current elements tab index
+			var tabbables = document.getElementsByTagName("input"); //get all tabable elements
+			for(var i=0; i<tabbables.length-1; i++) { //loop through each element
+				if(tabbables[i] == currentElement) { //check the tabindex to see if it's the element we want
+					tabbables[i+1].focus(); //if it's the one we want, focus it and exit the loop
+					break;
+				}
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h2 class="text-uppercase text-center">
+					SO LEGGERE
+				</h2>
+				<h3 class="text-center">
+				Leggi insieme a LEO la storia di Dino il dinosauro e inserisci la parola mancante scegliendola tra<br/><b>DINOSAURO – TENDA – DIVANO</b>
+				</h3>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td>
+							IL DINOSAURO DORME SUL <input type="text" maxlength="6" size="8" placeholder="______"/> E RUSSA
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Il dinosauro dorme sul divano e russa
+						</td>
+					</tr>
+					<tr class="separator">
+						<td></td>
+						<td/>
+					</tr>
+					<tr>
+						<td>
+							DI MATTINA IL DOTTORE D&Agrave; LA MEDICINA A DINO IL <input type="text" maxlength="9" size="11" placeholder="_________"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Di mattina il dottore dà la medicina a Dino il dinosauro
+						</td>
+					</tr>
+					<tr class="separator">
+						<td></td>
+						<td/>
+					</tr>
+					<tr>
+						<td>
+							IL DINOSAURO DINO FA MERENDA NELLA <input type="text" maxlength="5" size="6" placeholder="_____"/> A FIORI
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Il dinosauro Dino fa merenda nella tenda a fiori
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table style="width: 50%">
+					<tr>
+						<td align="center" style="width: 30%">
+							<img src="assets/images/dottore.jpg"/>
+						</td>
+						<td align="center" style="width: 30%">
+							<img src="assets/images/dinosauro.jpg"/>
+						</td>
+						<td align="center" style="width: 30%">
+							<img src="assets/images/tenda.jpg"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width=100%>
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='35.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

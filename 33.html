@@ -112,6 +112,16 @@
 				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
 			}
 		}
+		function moveNext(currentElement){
+			var curIndex = currentElement.tabIndex; //get current elements tab index
+			var tabbables = document.getElementsByTagName("input"); //get all tabable elements
+			for(var i=0; i<tabbables.length-1; i++) { //loop through each element
+				if(tabbables[i] == currentElement) { //check the tabindex to see if it's the element we want
+					tabbables[i+1].focus(); //if it's the one we want, focus it and exit the loop
+					break;
+				}
+			}
+		}
 	</script>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
@@ -136,11 +146,11 @@
 						<td class="cell"><img src="assets/images/gatto.jpg"></td>
 					</tr>
 					<tr>
-						<td>B<input type="text" size="1" maxlength="1" placeholder="_"/><input type="text" size="1" maxlength="1" placeholder="_"/></td>
+						<td>B<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
 						<td/>
-						<td>B<input type="text" size="1" maxlength="1" placeholder="_"/><input type="text" size="1" maxlength="1" placeholder="_"/></td>
+						<td>B<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
 						<td/>
-						<td>M<input type="text" size="1" maxlength="1" placeholder="_"/><input type="text" size="1" maxlength="1" placeholder="_"/><input type="text" size="1" maxlength="1" placeholder="_"/></td>
+						<td>M<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
 					</tr>
 					<tr class="separator">
 						<td></td>
@@ -157,11 +167,11 @@
 						<td class="cell"><img src="assets/images/passero.jpg"></td>
 					</tr>
 					<tr>
-						<td>Q<input type="text" size="1" maxlength="1" placeholder="_"/><input type="text" size="1" maxlength="1" placeholder="_"/>-Q<input type="text" size="1" maxlength="1" placeholder="_"/><input type="text" size="1" maxlength="1" placeholder="_"/></td>
+						<td>Q<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>-Q<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
 						<td/>
-						<td>GL<input type="text" size="1" maxlength="1" placeholder="_"/>-GL<input type="text" size="1" maxlength="1" placeholder="_"/></td>
+						<td>GL<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>-GL<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
 						<td/>
-						<td><input type="text" size="1" maxlength="1" placeholder="_"/>P-C<input type="text" size="1" maxlength="1" placeholder="_"/>P</td>
+						<td>C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>P-C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>P</td>
 					</tr>
 					<tr class="separator">
 						<td></td>
@@ -178,11 +188,11 @@
 						<td class="cell"><img src="assets/images/pulcino.jpg"></td>
 					</tr>
 					<tr>
-						<td>IH<input type="text" size="1" maxlength="1" placeholder="_"/>-IH<input type="text" size="1" maxlength="1" placeholder="_"/></td>
+						<td>IH<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>-IH<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
 						<td/>
-						<td>C<input type="text" size="1" maxlength="1" placeholder="_"/>CC<input type="text" size="1" maxlength="1" placeholder="_"/>D<input type="text" size="1" maxlength="1" placeholder="_"/>'</td>
+						<td>C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>CC<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>D<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>'</td>
 						<td/>
-						<td>P<input type="text" size="1" maxlength="1" placeholder="_"/><input type="text" size="1" maxlength="1" placeholder="_"/>-P<input type="text" size="1" maxlength="1" placeholder="_"/><input type="text" size="1" maxlength="1" placeholder="_"/></td>
+						<td>P<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>-P<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
 					</tr>
 					<tr class="separator">
 						<td></td>
@@ -199,7 +209,7 @@
 				<table width=100%>
 					<tr>
 						<td align="center">
-							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='28.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='34.html'">Avanti <i class="fa fa-arrow-right"></i></button>
 						</td>
 					</tr>
 				</table>
