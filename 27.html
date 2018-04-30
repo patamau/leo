@@ -82,12 +82,14 @@
 		font-size: 26px;
 		color: white;
 	}
+	.riga td{
+		border: 1px solid black;
+	}
 	td.drop-area{
 		padding: 10px;
 		margin: 10px;
 		height: 50px;
 		background-color: lightgrey;
-		border: 1px solid black
 	}
 	div.draggable{
 		border: 1px solid silver;
@@ -116,8 +118,8 @@
 		<tr>
 			<td>
 				<table class="grid">
-					<tr>
-						<td>0</td>
+					<tr class="riga">
+						<td class="cell">0</td>
 						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag1-1')" ondragover="allowDrop(event)"></td>
 						<td>2</td>
 						<td class="cell drop-area" id="drop1" ondrop="drop(event, 'drag1-3')" ondragover="allowDrop(event)"></td>
@@ -170,7 +172,7 @@ ondragstart="drag(event)" >6</div>
 		<tr>
 			<td>
 				<table class="grid">
-					<tr>
+					<tr class="riga">
 						<td class="cell drop-area" id="drop8" ondrop="drop(event, 'drag2-8')" ondragover="allowDrop(event)"></td>
 						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag2-9')" ondragover="allowDrop(event)"></td>
 						<td>10</td>
@@ -217,7 +219,7 @@ ondragstart="drag(event)" >14</div>
 		<tr>
 			<td>
 				<table class="grid">
-					<tr>
+					<tr class="riga">
 						<td>11</td>
 						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag3-12')" ondragover="allowDrop(event)"></td>
 						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag3-13')" ondragover="allowDrop(event)"></td>

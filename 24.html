@@ -100,10 +100,13 @@
 <body>
 	<script>
 		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			var value = component.value.trim().toLowerCase();
+			if(value.length==0){
+				component.style.border = '1px silver solid';
+			}else if(value == valid){
+				component.style.border = '2px green solid';
 			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+				component.style.border = '2px red solid';
 			}
 		}
 	</script>
@@ -147,7 +150,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><br/></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>
@@ -156,7 +159,7 @@
 									<td style="width: 20%">
 									</td>
 									<td class="cell align-bottom text-left">
-										QUANTI VASSOI? <input type="text" placeholder="..." size="2">
+										QUANTI VASSOI? <input type="text" placeholder="..." size="2" onkeyup="validate(this, '1')"/>
 									</td>
 								</tr>
 							</table>
@@ -169,7 +172,7 @@
 									<td style="width: 20%">
 									</td>
 									<td class="cell align-bottom text-left">
-										QUANTE CIAMBELLE NEL SACCHETTO? <input type="text" placeholder="..." size="2">
+										QUANTE CIAMBELLE NEL SACCHETTO? <input type="text" placeholder="..." size="2" onkeyup="validate(this, '2')">
 									</td>
 								</tr>
 							</table>
@@ -182,7 +185,7 @@
 									<td style="width: 20%">
 									</td>
 									<td class="cell align-bottom text-left">
-										CIAMBELLE IN TUTTO <input type="text" placeholder="..." size="2">
+										CIAMBELLE IN TUTTO <input type="text" placeholder="..." size="2" onkeyup="validate(this, '12')">
 									</td>
 								</tr>
 							</table>
@@ -222,7 +225,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><br/></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>
@@ -231,7 +234,7 @@
 									<td style="width: 20%">
 									</td>
 									<td class="cell align-bottom text-left">
-										QUANTI VASSOI? <input type="text" placeholder="..." size="2">
+										QUANTI VASSOI? <input type="text" placeholder="..." size="2" onkeyup="validate(this, '1')">
 									</td>
 								</tr>
 							</table>
@@ -244,7 +247,7 @@
 									<td style="width: 20%">
 									</td>
 									<td class="cell align-bottom text-left">
-										QUANTE CIAMBELLE NEL SACCHETTO? <input type="text" placeholder="..." size="2">
+										QUANTE CIAMBELLE NEL SACCHETTO? <input type="text" placeholder="..." size="2" onkeyup="validate(this, '4')">
 									</td>
 								</tr>
 							</table>
@@ -257,7 +260,7 @@
 									<td style="width: 20%">
 									</td>
 									<td class="cell align-bottom text-left">
-										CIAMBELLE IN TUTTO <input type="text" placeholder="..." size="2">
+										CIAMBELLE IN TUTTO <input type="text" placeholder="..." size="2" onkeyup="validate(this, '14')">
 									</td>
 								</tr>
 							</table>

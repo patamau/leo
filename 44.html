@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+	<script>
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+	}
+
+	function drop(ev, check) {
+		console.log(ev.target.tagName);
+		var target = ev.target;
+		if(target.tagName != 'TD'){
+			var parent = target.parentElement;
+			if(parent.tagName != 'TD'){
+				target = parent;
+				parent = target.parentElement;
+				if(parent.tagName != 'TD'){
+					return false;
+				}
+			}
+			target = parent;
+		}
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		target.appendChild(document.getElementById(data));
+	}
+	</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		max-height: 70%;
+		max-width: 70%;
+		margin: auto;
+	}
+	td.cell{
+		width: 10%;
+		height: 10%;
+		text-align: center;
+	}
+	tr.separator{
+		height:20px;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		margin: auto;
+		width: 60%;
+	}
+	.cell img{
+		max-width: 100%;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	td.drop-area{
+		padding: 10px;
+		margin: 10px;
+		height: 50px;
+		border: 1px solid grey;
+	}
+	div.draggable{
+		border: 1px solid silver;
+		font-size: 26px;
+		float: left;
+		margin: 5px;
+		padding: 2px;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
+			}else{
+				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h2 class="text-uppercase text-center">
+					FORMO FRASI
+				</h2>
+				<h4 class="text-center">
+					Insieme a Leo scrivi una frase con le parole di ogni riquadro
+				</h4>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td style="width: 48%" class="cell align-bottom">
+							<div id="drag1-1" class="draggable" draggable="true" ondragstart="drag(event)" >tante</div>
+							<div id="drag2-1" class="draggable" draggable="true" ondragstart="drag(event)" >noci</div>
+							<div id="drag3-1" class="draggable" draggable="true" ondragstart="drag(event)" >vedo</div>
+							<div id="drag4-1" class="draggable" draggable="true" ondragstart="drag(event)" >Nella</div>
+							<div id="drag5-1" class="draggable" draggable="true" ondragstart="drag(event)" >tana</div>
+						</td>
+						<td></td>
+						<td style="width: 48%" class="cell drop-area" id="drop1" ondrop="drop(event, '1')" ondragover="allowDrop(event)">
+						</td>
+					</tr>
+					<tr class="separator">
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell align-bottom">
+							<div id="drag1-2" class="draggable" draggable="true" ondragstart="drag(event)" >mangiano</div>
+							<div id="drag2-2" class="draggable" draggable="true" ondragstart="drag(event)" >Gli</div>
+							<div id="drag3-2" class="draggable" draggable="true" ondragstart="drag(event)" >scoiattoli</div>
+							<div id="drag4-2" class="draggable" draggable="true" ondragstart="drag(event)" >le</div>
+							<div id="drag5-2" class="draggable" draggable="true" ondragstart="drag(event)" >noci</div>
+						</td>
+						<td></td>
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, '2')" ondragover="allowDrop(event)">
+						</td>
+					</tr>
+					<tr class="separator">
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell align-bottom">
+							<div id="drag1-3" class="draggable" draggable="true" ondragstart="drag(event)" >le</div>
+							<div id="drag2-3" class="draggable" draggable="true" ondragstart="drag(event)" >noci</div>
+							<div id="drag3-3" class="draggable" draggable="true" ondragstart="drag(event)" >raccoglie</div>
+							<div id="drag4-3" class="draggable" draggable="true" ondragstart="drag(event)" >Lo</div>
+							<div id="drag5-3" class="draggable" draggable="true" ondragstart="drag(event)" >scoiattolo</div>
+						</td>
+						<td></td>
+						<td class="cell drop-area" id="drop3" ondrop="drop(event, '3')" ondragover="allowDrop(event)">
+						</td>
+					</tr>
+					<tr class="separator">
+						<td/>
+					</tr>
+					<tr>
+						<td class="cell align-bottom">
+							<div id="drag1-4" class="draggable" draggable="true" ondragstart="drag(event)" >con</div>
+							<div id="drag2-4" class="draggable" draggable="true" ondragstart="drag(event)" >le</div>
+							<div id="drag3-4" class="draggable" draggable="true" ondragstart="drag(event)" >noci</div>
+							<div id="drag4-4" class="draggable" draggable="true" ondragstart="drag(event)" >Preparo</div>
+							<div id="drag5-4" class="draggable" draggable="true" ondragstart="drag(event)" >una</div>
+							<div id="drag5-4" class="draggable" draggable="true" ondragstart="drag(event)" >torta</div>
+						</td>
+						<td></td>
+						<td class="cell drop-area" id="drop4" ondrop="drop(event, '4')" ondragover="allowDrop(event)">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width=100%>
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-warning btn-block btn-lg btn-forward" onclick="location.href='45.html'">Rinforzo <i class="fa fa-check"></i></button>
+						</td>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='46.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

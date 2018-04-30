@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Leo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/bootstrap.min.js"></script>
+	<style>
+	html, body{
+		height: 100%
+	}
+	h1 {
+		margin-top: 15px;
+	}
+	img.cell-img {
+		display: block;
+		height: 150px;
+		margin: auto;
+	}
+	td.cell{
+		width: 30%;
+		height: 10%;
+		border: 1px solid silver;
+		text-align: center;
+	}
+	.grid td{
+		font-size: 18px;
+	}
+	i.valid{
+		color: green;
+	}
+	i.wrong{
+		color: red;
+	}
+	table.grid{
+		max-width: 50%;
+		margin: auto;
+	}
+	button.btn-forward{
+		width: 25%;
+		height: auto;
+		font-size: 26px;
+		color: white;
+	}
+	textarea.input{
+		font-size: 20px;
+		text-transform: uppercase;
+	}
+	ul {
+		list-style-type: none;
+	}
+	li {
+		margin: 3px;
+		padding: 2px;
+		border-width: 5px;
+		border-color: white;
+		border-style: solid;
+	}
+	</style>
+</head>
+<body>
+	<script>
+		function validate(component, valid){
+			if(valid){
+				component.style.borderWidth = '5px';
+				component.style.borderColor = 'green';
+				component.style.borderStyle = 'solid';
+			}else{
+				component.style.borderWidth = '5px';
+				component.style.borderColor = 'red';
+				component.style.borderStyle = 'dotted';
+			}
+		}
+	</script>
+	<table style="margin: auto" width="90%" height="100%">
+		<tr>
+			<td>
+				<h3 class="text-uppercase text-center">
+					CHI? CHE COSA FA?
+				</h3>
+				<h4 class="text-center">
+					Insieme a Leo indica che cosa fa il personaggio indicato:
+				</h4>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="grid">
+					<tr>
+						<td>
+							<img class="cell-img" src="assets/images/farfalla.jpg"/>
+						</td>
+						<td width="60px"/>
+						<td align="left">
+							<h4>LA FARFALLA</h4>
+							<ul>
+							<li onclick="validate(this, true);">VOLA</li>
+							<li onclick="validate(this, false);">PARLA</li>
+							<li onclick="validate(this, false);">RUGGISCE</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img class="cell-img" src="assets/images/mamma_arrabbiata.jpg"/>
+						</td>
+						<td width="60px"/>
+						<td align="left">
+							<h4>LA ZIA</h4>
+							<ul>
+							<li onclick="validate(this, false);">VOLA</li>
+							<li onclick="validate(this, true);">PARLA</li>
+							<li onclick="validate(this, false);">RUGGISCE</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img class="cell-img" src="assets/images/leo.jpg"/>
+						</td>
+						<td width="60px"/>
+						<td align="left">
+							<h4>IL LEONE</h4>
+							<ul>
+							<li onclick="validate(this, false);">VOLA</li>
+							<li onclick="validate(this, false);">PARLA</li>
+							<li onclick="validate(this, true);">RUGGISCE</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table width=100%>
+					<tr>
+						<td align="center">
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='44.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

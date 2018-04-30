@@ -10,8 +10,6 @@
 
 	function drag(ev) {
 		ev.dataTransfer.setData("text", ev.target.id);
-		ev.target.style.backgroundColor = 'white';
-		ev.target.parentElement.style.backgroundColor = 'lightgrey';
 	}
 
 	function drop(ev, check) {
@@ -31,7 +29,8 @@
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
 		console.log(data);
-		target.appendChild(document.getElementById(data));
+		target.innerHTML='';
+		target.appendChild(document.getElementById(data).cloneNode(true));
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,13 +51,16 @@
 		max-width: 70%;
 		margin: auto;
 	}
+	.grid td{
+		text-align: center;
+		font-size: 30px;
+	}
 	td.cell{
-		width: 30%;
 		height: 10%;
 		text-align: center;
 	}
 	tr.separator{
-		height:100px;
+		height:20px;
 	}
 	i.valid{
 		color: green;
@@ -68,11 +70,12 @@
 	}
 	table.grid{
 		margin: auto;
-		width: 100%;
+		width: 80%;
 	}
 	.cell img{
-		max-width: 40%;
-		max-height: 60%;
+		max-width: 100px;
+		max-height: 100px;
+		margin-right: 20px;
 	}
 	button.btn-forward{
 		width: 25%;
@@ -81,12 +84,12 @@
 		color: white;
 	}
 	td.drop-area{
-		padding: 10px;
 		margin: 10px;
 		height: 50px;
-		background-color: lightgrey;
+		width: 50px;
 	}
 	div.draggable{
+		border: 1px solid silver;
 		font-size: 26px;
 	}
 	</style>
@@ -105,67 +108,60 @@
 		<tr>
 			<td>
 				<h2 class="text-uppercase text-center">
-					IO LEGGO
+					INDOVINA CON LEO LA PAROLA
 				</h2>
-				<h3 class="text-center">
-					Aiuta Leo a collegare le frasi ai disegni giusti
-				</h3>
+				<h4 class="text-center">
+					Completa la parola!
+				</h4>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<table class="grid">
 					<tr>
-						<td class="cell align-bottom">
-							<h5>
-							ZEBRA ZIZ&Igrave; VEDE TANTI ANIMALI<br/>
-							Zebra Ziz&igrave; vede tanti animali
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/gnomo.jpg"></td>
+									<td class="drop-area" id="dropGN" ondrop="drop(event, 'dragGN')" ondragover="allowDrop(event)">_ _</td>
+									<td>OMO</td>
+							</tr></table>
 						</td>
-						<td/>
-						<td class="cell align-bottom">
-							<h5>
-							IPPOPOTAMO IPPI FA I TUFFI<br/>
-							Ippopotamo Ippi fa i tuffi
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/pesce.jpg"></td>
+									<td>PE</td>
+									<td class="drop-area" id="dropSC" ondrop="drop(event, 'dragSC')" ondragover="allowDrop(event)">_ _</td>
+									<td>E</td>
+							</tr></table>
 						</td>
-						<td/>
-						<td class="cell align-bottom">
-							<h5>
-							IL DELFINO NUOTA TRA LE ONDE<br/>
-							Il delfino nuota tra le onde
-						</td>
-					</tr>
-					<tr>
-						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag2')" ondragover="allowDrop(event)">
-						</td>
-						<td/>
-						<td class="cell drop-area" id="drop1" ondrop="drop(event, 'drag3')" ondragover="allowDrop(event)">
-						</td>
-						<td/>
-						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag1')" ondragover="allowDrop(event)">
+						<td class="cell">
+							<table><tr>
+									<td><img src="assets/images/coniglio.jpg"></td>
+									<td>CONI</td>
+									<td class="drop-area" id="dropGL" ondrop="drop(event, 'dragGL')" ondragover="allowDrop(event)">_ _</td>
+									<td>IO</td>
+							</tr></table>
 						</td>
 					</tr>
 					<tr class="separator">
 						<td/>
-						<td/>
-						<td/>
-						<td/>
-						<td/>
 					</tr>
 					<tr>
 						<td class="cell">
-							<div id="drag1" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/delfino.jpg" id="drag1"/></div>
+							<div id="dragSC" class="draggable" draggable="true"
+ondragstart="drag(event)" >SC</div>
 						</td>
-						<td/>
 						<td class="cell">
-							<div id="drag2" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/zebra_zizi.jpg" id="drag2"/></div>
+							<div id="dragGL" class="draggable" draggable="true"
+ondragstart="drag(event)" >GL</div>
 						</td>
-						<td/>
 						<td class="cell">
-							<div id="drag3" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/ippopotamo.jpg" id="drag3"/></div>
+							<div id="dragGN" class="draggable" draggable="true"
+ondragstart="drag(event)" >GN</div>
 						</td>
+					</tr>
+					<tr class="separator">
+						<td/>
 					</tr>
 				</table>
 			</td>
@@ -175,10 +171,7 @@ ondragstart="drag(event)" ><img src="assets/images/ippopotamo.jpg" id="drag3"/><
 				<table width=100%>
 					<tr>
 						<td align="center">
-							<button type="button" class="btn btn-default btn-warning btn-block btn-lg btn-forward" onclick="location.href='37.html'">Rinforzo <i class="fa fa-check"></i></button>
-						</td>
-						<td align="center">
-							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='38.html'">Avanti <i class="fa fa-arrow-right"></i></button>
+							<button type="button" class="btn btn-default btn-success btn-block btn-lg btn-forward" onclick="location.href='40.html'">Avanti <i class="fa fa-arrow-right"></i></button>
 						</td>
 					</tr>
 				</table>
