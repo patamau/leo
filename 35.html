@@ -48,6 +48,9 @@
 		vertical-align: bottom;
 		margin: auto;
 	}
+	table.domande{
+		margin: auto;
+	}
 	.domande{
 		font-size: 20px;
 	}
@@ -55,9 +58,44 @@
 		max-width: 70%;
 		max-height: 60%;
 	}
+	td.domande{
+		font-size: 25px;
+	}
+	.domande li{
+		font-size: 25px;
+	}
+	#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Clicca sugli elementi che rispondono ai requisiti indicati.<br/>
+		Un riquadro verde indicher&agrave; se la scelta &egrave; corretta.
+	</div>
 	<script>
 		function validate(component, valid){
 			if(valid){
@@ -124,7 +162,7 @@
 			<td/>
 		</tr>
 		<tr>
-			<td class="domande">
+			<td class="domande" align="center">
 				Seleziona i disegni giusti:
 			</td>
 		</tr>

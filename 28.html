@@ -115,10 +115,38 @@
 	.cell img{
 		max-width: 30%;
 		max-height: 30%;
+	}	#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
 	}
 	</style>
 </head>
 <body>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Trascina gli elementi nei riquadri grigi per formare dei gruppi.<br/>
+		Il verde indicherà se gli elementi nei gruppi sono tutti omogenei.
+	</div>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>

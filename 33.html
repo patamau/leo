@@ -101,9 +101,42 @@
 		border: 1px solid silver;
 		font-size: 26px;
 	}
+		#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Digita le vocali al posto dei trattini.<br/>
+		Prima di iniziare a digitare assicurarsi che il cursore sia nel campo desiderato.<br/>
+		Ogni campo pu&ograve; contenere un solo carattere.<br/>
+		Per correggere, selezionare il carattere esistente facendo doppio clic sul campo e digitare il carattere nuovo.<br/>
+		Ad ogni pressione di tasto, il focus salter&agrave; automaticamente al campo successivo.<br/>
+		Il verde indica se la vocale inserita &egrave; corretta.
+	</div>
 	<script>
 		function validate(component, check){
 			var valid = check === component.value;

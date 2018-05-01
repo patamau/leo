@@ -109,10 +109,39 @@
 	div.draggable{
 		border: 1px solid silver;
 		font-size: 26px;
+	}	#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
 	}
 	</style>
 </head>
 <body>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Digita le parole negli spazi indicati dai trattini.<br/>
+		Il verde indicher&agrave; se la parola inserita &egrave; corretta: durante la digitazione sar&agrave; rossa in quanto incompleta.<br/>
+		Assicurati di avere il cursore nel campo desiderato prima di iniziare a digitare.
+	</div>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>

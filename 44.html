@@ -112,9 +112,40 @@
 		padding: 2px;
 		background-color: white;
 	}
+	
+	#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Trascina le parole nei riquadri sulla destra.<br/>
+		Il verde indicher&agrave; se l'ordine &egrave; corretto.<br/>
+		Per cambiare l'ordine, trascinare nuovamente una parola nel riquadro: questa verr&agrave; posizionata in fondo.
+	</div>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>
