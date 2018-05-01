@@ -12,8 +12,29 @@
 		ev.dataTransfer.setData("text", ev.target.id);
 	}
 
+	function validate(element){
+		var children = Array.from(element.childNodes);
+		console.log(datacheck);
+		var valid = true;
+		for(child in children){
+			if(children[child].nodeName=='DIV'){
+				var datacheck = children[child].id.slice(-3,-2);
+				console.log(datacheck+" vs "+child);
+				if(datacheck!=child){
+					valid = false;
+				}
+			}
+		}
+		if(!valid){
+			element.style.backgroundColor = 'red';
+		}else if(children.length>1){
+			element.style.backgroundColor = 'green';
+		}else{
+			element.style.backgroundColor = 'white';
+		}
+	}
+
 	function drop(ev, check) {
-		console.log(ev.target.tagName);
 		var target = ev.target;
 		if(target.tagName != 'TD'){
 			var parent = target.parentElement;
@@ -29,6 +50,7 @@
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
 		target.appendChild(document.getElementById(data));
+		validate(target);
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,19 +110,11 @@
 		float: left;
 		margin: 5px;
 		padding: 2px;
+		background-color: white;
 	}
 	</style>
 </head>
 <body>
-	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
-			}
-		}
-	</script>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>
@@ -117,9 +131,9 @@
 				<table class="grid">
 					<tr>
 						<td style="width: 50%" class="cell align-bottom">
-							<div id="drag1-1" class="draggable" draggable="true" ondragstart="drag(event)" >scorre</div>
-							<div id="drag2-1" class="draggable" draggable="true" ondragstart="drag(event)" >Il</div>
-							<div id="drag3-1" class="draggable" draggable="true" ondragstart="drag(event)" >fiume</div>
+							<div id="drag3-1" class="draggable" draggable="true" ondragstart="drag(event)" >scorre</div>
+							<div id="drag1-1" class="draggable" draggable="true" ondragstart="drag(event)" >Il</div>
+							<div id="drag2-1" class="draggable" draggable="true" ondragstart="drag(event)" >fiume</div>
 						</td>
 						<td></td>
 						<td style="width: 50%" class="cell drop-area" id="drop1" ondrop="drop(event, '1')" ondragover="allowDrop(event)">
@@ -130,8 +144,8 @@
 					</tr>
 					<tr>
 						<td class="cell align-bottom">
-							<div id="drag1-2" class="draggable" draggable="true" ondragstart="drag(event)" >Luna</div>
-							<div id="drag2-2" class="draggable" draggable="true" ondragstart="drag(event)" >La</div>
+							<div id="drag2-2" class="draggable" draggable="true" ondragstart="drag(event)" >Luna</div>
+							<div id="drag1-2" class="draggable" draggable="true" ondragstart="drag(event)" >La</div>
 							<div id="drag3-2" class="draggable" draggable="true" ondragstart="drag(event)" >illumina</div>
 						</td>
 						<td></td>
@@ -144,8 +158,8 @@
 					<tr>
 						<td class="cell align-bottom">
 							<div id="drag1-3" class="draggable" draggable="true" ondragstart="drag(event)" >Il</div>
-							<div id="drag2-3" class="draggable" draggable="true" ondragstart="drag(event)" >passeggia</div>
-							<div id="drag3-3" class="draggable" draggable="true" ondragstart="drag(event)" >nonno</div>
+							<div id="drag3-3" class="draggable" draggable="true" ondragstart="drag(event)" >passeggia</div>
+							<div id="drag2-3" class="draggable" draggable="true" ondragstart="drag(event)" >nonno</div>
 						</td>
 						<td></td>
 						<td class="cell drop-area" id="drop3" ondrop="drop(event, '3')" ondragover="allowDrop(event)">
@@ -156,9 +170,9 @@
 					</tr>
 					<tr>
 						<td class="cell align-bottom">
-							<div id="drag1-4" class="draggable" draggable="true" ondragstart="drag(event)" >corre</div>
+							<div id="drag3-4" class="draggable" draggable="true" ondragstart="drag(event)" >corre</div>
 							<div id="drag2-4" class="draggable" draggable="true" ondragstart="drag(event)" >topo</div>
-							<div id="drag3-4" class="draggable" draggable="true" ondragstart="drag(event)" >Il</div>
+							<div id="drag1-4" class="draggable" draggable="true" ondragstart="drag(event)" >Il</div>
 						</td>
 						<td></td>
 						<td class="cell drop-area" id="drop4" ondrop="drop(event, '4')" ondragover="allowDrop(event)">

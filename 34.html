@@ -31,6 +31,15 @@
 		var data = ev.dataTransfer.getData("text");
 		target.appendChild(document.getElementById(data));
 	}
+	
+	function validate(component, check){
+			var valid = check === component.value;
+			if(!valid){
+				component.style.color = 'red';
+			} else {
+				component.style.color = 'green';
+			}
+		}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -104,25 +113,6 @@
 	</style>
 </head>
 <body>
-	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
-			}
-		}
-		function moveNext(currentElement){
-			var curIndex = currentElement.tabIndex; //get current elements tab index
-			var tabbables = document.getElementsByTagName("input"); //get all tabable elements
-			for(var i=0; i<tabbables.length-1; i++) { //loop through each element
-				if(tabbables[i] == currentElement) { //check the tabindex to see if it's the element we want
-					tabbables[i+1].focus(); //if it's the one we want, focus it and exit the loop
-					break;
-				}
-			}
-		}
-	</script>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>
@@ -139,7 +129,7 @@
 				<table class="grid">
 					<tr>
 						<td>
-							IL DINOSAURO DORME SUL <input type="text" maxlength="6" size="8" placeholder="______"/> E RUSSA
+							IL DINOSAURO DORME SUL <input type="text" maxlength="6" size="8" placeholder="______" onkeyup="validate(this, 'divano')"/> E RUSSA
 						</td>
 					</tr>
 					<tr>
@@ -153,7 +143,7 @@
 					</tr>
 					<tr>
 						<td>
-							DI MATTINA IL DOTTORE D&Agrave; LA MEDICINA A DINO IL <input type="text" maxlength="9" size="11" placeholder="_________"/>
+							DI MATTINA IL DOTTORE D&Agrave; LA MEDICINA A DINO IL <input type="text" maxlength="9" size="11" placeholder="_________" onkeyup="validate(this, 'dinosauro')"/>
 						</td>
 					</tr>
 					<tr>
@@ -167,7 +157,7 @@
 					</tr>
 					<tr>
 						<td>
-							IL DINOSAURO DINO FA MERENDA NELLA <input type="text" maxlength="5" size="6" placeholder="_____"/> A FIORI
+							IL DINOSAURO DINO FA MERENDA NELLA <input type="text" maxlength="5" size="6" placeholder="_____" onkeyup="validate(this, 'tenda')"/> A FIORI
 						</td>
 					</tr>
 					<tr>

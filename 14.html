@@ -32,6 +32,8 @@
 		var data = ev.dataTransfer.getData("text");
 		console.log(data);
 		target.appendChild(document.getElementById(data));
+		var valid = document.getElementById('drop1').childNodes.length == document.getElementById('drop2').childNodes.length;
+		validate(document.getElementById('validator'), valid);
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,7 +72,7 @@
 		margin: auto;
 	}
 	.draggable img{
-		width: 10%;
+		height: 40px;
 	}
 	button.btn-forward{
 		width: 25%;
@@ -88,9 +90,38 @@
 		font-size: 26px;
 		text-align: center;
 	}
+	#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Trascina gli elementi nei cestini.<br/>
+		Una spunta verde indicher&agrave; se la disposizione degli elementi &egrave; corretta.
+	</div>
 	<script>
 		function validate(component, valid){
 			if(valid){
@@ -117,7 +148,8 @@
 						<td style="width: 20%" class="drop-area" id="drop1" ondrop="drop(event, 'drag1')" ondragover="allowDrop(event)">
 							<img width='100%' src="assets/images/cestino.jpg"/>
 						</td>
-						<td/>
+						<td id="validator" align="center">
+						</td>
 						<td style="width: 20%" class="drop-area" id="drop2" ondrop="drop(event, 'drag2')" ondragover="allowDrop(event)">
 							<img width='100%' src="assets/images/cestino.jpg"/>
 						</td>

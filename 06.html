@@ -10,28 +10,56 @@
 
 	function drag(ev) {
 		ev.dataTransfer.setData("text", ev.target.id);
-		ev.target.style.backgroundColor = 'white';
-		ev.target.parentElement.style.backgroundColor = 'lightgrey';
+		if(ev.srcElement.parentElement.tagName==='TD'){
+			ev.dataTransfer.setData("source", ev.srcElement.parentElement.id);
+		}else{
+			ev.dataTransfer.setData("source", ev.srcElement.parentElement.parentElement.id);
+		}
+	}
+	
+	function validate(element){
+		var children = Array.from(element.childNodes);
+		var datacheck = element.id.slice(-1);
+		var valid = true;
+		for(child in children){
+			if(children[child].nodeName=='DIV'){
+				if(datacheck === ''){
+					datacheck = children[child].id.slice(-1);
+				} else if(children[child].id.slice(-1) != datacheck){
+					valid = false;
+					break;
+				}
+			}
+		}
+		if(!valid){
+			element.style.backgroundColor = 'red';
+		}else if(children.length>1){
+			element.style.backgroundColor = 'green';
+		}else{
+			element.style.backgroundColor = 'lightgrey';
+		}
 	}
 
 	function drop(ev, check) {
-		console.log(ev.target.tagName);
 		var target = ev.target;
 		if(target.tagName != 'TD'){
-			var parent = target.parentElement
+			var parent = target.parentElement;
 			if(parent.tagName != 'TD'){
-				return false;
+				target = parent;
+				parent = target.parentElement;
+				if(parent.tagName != 'TD'){
+					return false;
+				}
 			}
 			target = parent;
 		}
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
-		if(data == check){
-			target.style.backgroundColor = 'green';
-		}else{
-			target.style.backgroundColor = 'red';
-		}
+		var source = ev.dataTransfer.getData("source");
+		console.log("source drop: "+source);
 		target.appendChild(document.getElementById(data));
+		validate(target);
+		validate(document.getElementById(source));
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,19 +112,40 @@
 	div.draggable{
 		border: 1px solid silver;
 		font-size: 26px;
+		background-color: white;
+	}
+		#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
 	}
 	</style>
 </head>
 <body>
-	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
-			}
-		}
-	</script>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Trascina le scritte nei rispettivi riquadri.<br/>
+		Il verde indica che la frase &egrave; stata collocata correttamente.
+	</div>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>

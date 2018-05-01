@@ -13,7 +13,7 @@
 		//ev.target.style.backgroundColor = 'white';
 		//ev.target.parentElement.style.backgroundColor = 'lightgrey';
 	}
-
+	
 	function drop(ev, check) {
 		console.log(ev.target.tagName);
 		var target = ev.target;
@@ -32,6 +32,8 @@
 		var data = ev.dataTransfer.getData("text");
 		console.log(data);
 		target.appendChild(document.getElementById(data));
+		var valid = document.getElementById('drop1').childNodes.length > document.getElementById('drop2').childNodes.length;
+		validate(document.getElementById('validator'), valid);
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,9 +90,38 @@
 		border: 1px solid silver;
 		font-size: 26px;
 	}
+	#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Trascina gli elementi nei riquadri grigi corrispondenti.<br/>
+		Una spunta verde indicher&agrave; se la disposizione degli elementi &egrave; corretta.
+	</div>
 	<script>
 		function validate(component, valid){
 			if(valid){
@@ -104,7 +135,7 @@
 		<tr>
 			<td>
 				<h2 class="text-uppercase text-center">
-					NELLA CLASSE DI LEO IL GRUPPO DEI MASCHI E’ PIU’ NUMEROSO DI QUELLO DELLE FEMMINE.
+					NELLA CLASSE DI LEO IL GRUPPO DEI MASCHI è PIù NUMEROSO DI QUELLO DELLE FEMMINE.
 				</h2>
 				<h4 class="text-uppercase text-center">FORMA I DUE INSIEMI: QUELLO DEI MASCHI E QUELLO DELLE FEMMINE.</h4>
 			</td>
@@ -127,7 +158,8 @@
 						<td style="width: 30%" class="cell drop-area" id="drop1" ondrop="drop(event, 'drag1')" ondragover="allowDrop(event)">
 						</td>
 						<td/>
-						<td/>
+						<td id="validator" align="center">
+						</td>
 						<td/>
 						<td style="width: 30%" class="cell drop-area" id="drop2" ondrop="drop(event, 'drag2')" ondragover="allowDrop(event)">
 						</td>

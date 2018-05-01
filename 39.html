@@ -13,7 +13,6 @@
 	}
 
 	function drop(ev, check) {
-		console.log(ev.target.tagName);
 		var target = ev.target;
 		if(target.tagName != 'TD'){
 			var parent = target.parentElement;
@@ -28,9 +27,15 @@
 		}
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
-		console.log(data);
 		target.innerHTML='';
-		target.appendChild(document.getElementById(data).cloneNode(true));
+		var element = document.getElementById(data).cloneNode(true);
+		target.appendChild(element);
+		var valid = check === data;
+		if(!valid){
+			element.style.color = 'red';
+		} else {
+			element.style.color = 'green';
+		}
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,6 +77,9 @@
 		margin: auto;
 		width: 80%;
 	}
+	.cell table{
+		margin: auto;
+	}
 	.cell img{
 		max-width: 100px;
 		max-height: 100px;
@@ -95,15 +103,6 @@
 	</style>
 </head>
 <body>
-	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
-			}
-		}
-	</script>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>

@@ -10,12 +10,37 @@
 
 	function drag(ev) {
 		ev.dataTransfer.setData("text", ev.target.id);
-		ev.target.style.backgroundColor = 'white';
-		ev.target.parentElement.style.backgroundColor = 'lightgrey';
+		if(ev.srcElement.parentElement.tagName==='TD'){
+			ev.dataTransfer.setData("source", ev.srcElement.parentElement.id);
+		}else{
+			ev.dataTransfer.setData("source", ev.srcElement.parentElement.parentElement.id);
+		}
+	}
+	
+	function validate(element){
+		var children = Array.from(element.childNodes);
+		var datacheck = element.id.slice(-1);
+		var valid = true;
+		for(child in children){
+			if(children[child].nodeName=='DIV'){
+				if(datacheck === ''){
+					datacheck = children[child].id.slice(-1);
+				} else if(children[child].id.slice(-1) != datacheck){
+					valid = false;
+					break;
+				}
+			}
+		}
+		if(!valid){
+			element.style.backgroundColor = 'red';
+		}else if(children.length>1){
+			element.style.backgroundColor = 'green';
+		}else{
+			element.style.backgroundColor = 'lightgrey';
+		}
 	}
 
 	function drop(ev, check) {
-		console.log(ev.target.tagName);
 		var target = ev.target;
 		if(target.tagName != 'TD'){
 			var parent = target.parentElement;
@@ -30,8 +55,11 @@
 		}
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
-		console.log(data);
+		var source = ev.dataTransfer.getData("source");
+		console.log("source drop: "+source);
 		target.appendChild(document.getElementById(data));
+		validate(target);
+		validate(document.getElementById(source));
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,15 +120,6 @@
 	</style>
 </head>
 <body>
-	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
-			}
-		}
-	</script>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>
@@ -135,13 +154,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag2')" ondragover="allowDrop(event)">
+						<td class="cell drop-area" id="drop1" ondrop="drop(event, 'drag1')" ondragover="allowDrop(event)">
 						</td>
 						<td/>
-						<td class="cell drop-area" id="drop1" ondrop="drop(event, 'drag3')" ondragover="allowDrop(event)">
+						<td class="cell drop-area" id="drop3" ondrop="drop(event, 'drag3')" ondragover="allowDrop(event)">
 						</td>
 						<td/>
-						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag1')" ondragover="allowDrop(event)">
+						<td class="cell drop-area" id="drop2" ondrop="drop(event, 'drag2')" ondragover="allowDrop(event)">
 						</td>
 					</tr>
 					<tr class="separator">

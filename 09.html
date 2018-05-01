@@ -10,12 +10,38 @@
 
 	function drag(ev) {
 		ev.dataTransfer.setData("text", ev.target.id);
-		ev.target.style.backgroundColor = 'white';
-		ev.target.parentElement.style.backgroundColor = 'lightgrey';
+		if(ev.srcElement.parentElement.tagName==='TD'){
+			ev.dataTransfer.setData("source", ev.srcElement.parentElement.id);
+		}else{
+			ev.dataTransfer.setData("source", ev.srcElement.parentElement.parentElement.id);
+		}
+		console.log("source: "+ev.srcElement.parentElement.parentElement.id);
+	}
+	
+	function validate(element, datacheck){
+		var children = Array.from(element.childNodes);
+		var datacheck = '';
+		var valid = true;
+		for(child in children){
+			if(children[child].nodeName=='DIV'){
+				if(datacheck === ''){
+					datacheck = children[child].id.slice(-1);
+				} else if(children[child].id.slice(-1) != datacheck){
+					valid = false;
+					break;
+				}
+			}
+		}
+		if(!valid){
+			element.style.backgroundColor = 'red';
+		}else if(children.length>1){
+			element.style.backgroundColor = 'green';
+		}else{
+			element.style.backgroundColor = 'lightgrey';
+		}
 	}
 
 	function drop(ev, check) {
-		console.log(ev.target.tagName);
 		var target = ev.target;
 		if(target.tagName != 'TD'){
 			var parent = target.parentElement;
@@ -30,8 +56,11 @@
 		}
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
-		console.log(data);
+		var source = ev.dataTransfer.getData("source");
+		console.log("source drop: "+source);
 		target.appendChild(document.getElementById(data));
+		validate(target);
+		validate(document.getElementById(source));
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,19 +116,40 @@
 	div.draggable{
 		border: 1px solid silver;
 		font-size: 26px;
+		background-color: white;
+	}
+	#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
 	}
 	</style>
 </head>
 <body>
-	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
-			}
-		}
-	</script>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Trascina gli elementi nei riquadri grigi per formare dei gruppi.<br/>
+		Il verde indicherà se gli elementi nei gruppi sono tutti omogenei.
+	</div>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>
@@ -144,50 +194,50 @@
 					</tr>
 					<tr>
 						<td style="width: 30%" class="cell">
-							<div id="drag1" class="draggable" draggable="true"
+							<div id="drag1n" class="draggable" draggable="true"
 ondragstart="drag(event)" >2</div>
 						</td>
 						<td/>
 						<td  style="width: 30%" class="cell">
-							<div id="drag3" class="draggable" draggable="true"
+							<div id="drag3p" class="draggable" draggable="true"
 ondragstart="drag(event)" >APE</div>
 						</td>
 						<td/>
 						<td style="width: 30%" class="cell">
-							<div id="drag2" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/sole.jpg" id="drag2"/></div>
+							<div id="drag2i" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/sole.jpg" id="drag2i"/></div>
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 30%" class="cell">
-							<div id="drag4" class="draggable" draggable="true"
+							<div id="drag4n" class="draggable" draggable="true"
 ondragstart="drag(event)" >8</div>
 						</td>
 						<td/>
 						<td  style="width: 30%" class="cell">
-							<div id="drag5" class="draggable" draggable="true"
+							<div id="drag5p" class="draggable" draggable="true"
 ondragstart="drag(event)" >ERBA</div>
 						</td>
 						<td/>
 						<td style="width: 30%" class="cell">
-							<div id="drag6" class="draggable" draggable="true"
+							<div id="drag6n" class="draggable" draggable="true"
 ondragstart="drag(event)" >5</div>
 						</td>
 					</tr>
 					<tr>
 						<td  style="width: 30%" class="cell">
-							<div id="drag9" class="draggable" draggable="true"
+							<div id="drag9p" class="draggable" draggable="true"
 ondragstart="drag(event)" >MAMMA</div>
 						</td>
 						<td/>
 						<td style="width: 30%" class="cell">
-							<div id="drag7" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/gatto.jpg" id="drag7"/></div>
+							<div id="drag7i" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/gatto.jpg" id="drag7i"/></div>
 						</td>
 						<td/>
 						<td  style="width: 30%" class="cell">
-							<div id="drag8" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/albero.jpg" id="drag8"/></div>
+							<div id="drag8i" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/albero.jpg" id="drag8i"/></div>
 						</td>
 						<td/>
 					</tr>

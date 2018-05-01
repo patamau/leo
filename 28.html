@@ -10,7 +10,11 @@
 
 	function drag(ev) {
 		ev.dataTransfer.setData("text", ev.target.id);
-		ev.dataTransfer.setData("source", ev.srcElement.parentElement.parentElement.id);
+		if(ev.srcElement.parentElement.tagName==='TD'){
+			ev.dataTransfer.setData("source", ev.srcElement.parentElement.id);
+		}else{
+			ev.dataTransfer.setData("source", ev.srcElement.parentElement.parentElement.id);
+		}
 		console.log("source: "+ev.srcElement.parentElement.parentElement.id);
 	}
 	
@@ -28,10 +32,12 @@
 				}
 			}
 		}
-		if(valid){
+		if(!valid){
+			element.style.backgroundColor = 'red';
+		}else if(children.length>1){
 			element.style.backgroundColor = 'green';
 		}else{
-			element.style.backgroundColor = 'red';
+			element.style.backgroundColor = 'lightgrey';
 		}
 	}
 

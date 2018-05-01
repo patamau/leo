@@ -28,7 +28,14 @@
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
 		target.innerHTML='';
-		target.appendChild(document.getElementById(data).cloneNode(true));
+		var element = document.getElementById(data).cloneNode(true);
+		target.appendChild(element);
+		var valid = check === data;
+		if(!valid){
+			element.style.color = 'red';
+		} else {
+			element.style.color = 'green';
+		}
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -127,21 +134,21 @@
 						<td class="cell">
 							<table><tr>
 									<td><img src="assets/images/onda.jpg"></td>
-									<td class="drop-area" id="dropA" ondrop="drop(event, 'dragA')" ondragover="allowDrop(event)">_</td>
+									<td class="drop-area" id="dropO" ondrop="drop(event, 'dragO')" ondragover="allowDrop(event)">_</td>
 									<td>NDA</td>
 							</tr></table>
 						</td>
 						<td class="cell">
 							<table><tr>
 									<td><img src="assets/images/isola.jpg"></td>
-									<td class="drop-area" id="dropA" ondrop="drop(event, 'dragA')" ondragover="allowDrop(event)">_</td>
+									<td class="drop-area" id="dropI" ondrop="drop(event, 'dragI')" ondragover="allowDrop(event)">_</td>
 									<td>SOLA</td>
 							</tr></table>
 						</td>
 						<td class="cell">
 							<table><tr>
 									<td><img src="assets/images/uccello.jpg"></td>
-									<td class="drop-area" id="dropA" ondrop="drop(event, 'dragA')" ondragover="allowDrop(event)">_</td>
+									<td class="drop-area" id="dropU" ondrop="drop(event, 'dragU')" ondragover="allowDrop(event)">_</td>
 									<td>CCELLO</td>
 							</tr></table>
 						</td>

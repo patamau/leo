@@ -67,9 +67,44 @@
 		width: 15%;
 		font-size: 40px;
 	}
+	input {
+		text-align: center;
+	}
+	#help{
+	    position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 40%;
+		border-radius: 20px;
+		padding: 20px;
+		font-size: 22px;
+		display: none;
+	}
+	#help-btn{
+		position: fixed;
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: yellow;
+		width: 50px;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 22px;
+		display: block;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
+	<div id="help-btn" onclick="document.getElementById('help').style.display='block';"><i class="fa fa-question fa-2x"></i></div>
+	<div id="help" onclick="this.style.display='none';">
+		Inserisci il numero corretto nel campo di testo.<br/>
+		Se hai perso il focus, clicca nuovamente sul campo di testo.<br/>
+		Il campo accetta un solo carattere.<br/>
+		Per correggere, cancellare il carattere inserito precedentemente.<br/>
+		Il bordo diventa verde se il valore inserito &egrave; corretto.
+	</div>
 	<script>
 		function validate(component, valid){
 			console.log(component.value);

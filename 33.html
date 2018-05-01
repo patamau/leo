@@ -105,11 +105,12 @@
 </head>
 <body>
 	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
+		function validate(component, check){
+			var valid = check === component.value;
+			if(!valid){
+				component.style.color = 'red';
+			} else {
+				component.style.color = 'green';
 			}
 		}
 		function moveNext(currentElement){
@@ -146,11 +147,11 @@
 						<td class="cell"><img src="assets/images/gatto.jpg"></td>
 					</tr>
 					<tr>
-						<td>B<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
+						<td>B<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'e');"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'e');"/></td>
 						<td/>
-						<td>B<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
+						<td>B<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'a');"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'u');"/></td>
 						<td/>
-						<td>M<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
+						<td>M<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'i');"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'a');"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'o');"/></td>
 					</tr>
 					<tr class="separator">
 						<td></td>
@@ -167,11 +168,11 @@
 						<td class="cell"><img src="assets/images/passero.jpg"></td>
 					</tr>
 					<tr>
-						<td>Q<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>-Q<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
+						<td>Q<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'u');"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'a');"/>-Q<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'u');"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'a');"/></td>
 						<td/>
-						<td>GL<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>-GL<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
+						<td>GL<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'u');"/>-GL<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'u');"/></td>
 						<td/>
-						<td>C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>P-C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>P</td>
+						<td>C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'i');"/>P-C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'i');"/>P</td>
 					</tr>
 					<tr class="separator">
 						<td></td>
@@ -188,11 +189,11 @@
 						<td class="cell"><img src="assets/images/pulcino.jpg"></td>
 					</tr>
 					<tr>
-						<td>IH<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>-IH<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
+						<td>IH<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'i');"/>-IH<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'i');"/></td>
 						<td/>
-						<td>C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>CC<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>D<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>'</td>
+						<td>C<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'o');"/>CC<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'o');"/>D<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'e');"/>'</td>
 						<td/>
-						<td>P<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/>-P<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this)"/></td>
+						<td>P<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'i');"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'o');"/>-P<input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'i');"/><input type="text" size="1" maxlength="1" placeholder="_" onkeyup="moveNext(this); validate(this, 'o');"/></td>
 					</tr>
 					<tr class="separator">
 						<td></td>
