@@ -15,7 +15,6 @@
 	}
 
 	function drop(ev, check) {
-		console.log(ev.target.tagName);
 		var target = ev.target;
 		if(target.tagName != 'TD'){
 			var parent = target.parentElement;
@@ -30,13 +29,11 @@
 		}
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
-		
 		if(data == check){
 			target.style.backgroundColor = 'green';
 		}else{
 			target.style.backgroundColor = 'red';
 		}
-		target.appendChild(document.getElementById(dat
 		target.appendChild(document.getElementById(data));
 	}
 	</script>
@@ -104,15 +101,6 @@
 	</style>
 </head>
 <body>
-	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
-			}
-		}
-	</script>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>

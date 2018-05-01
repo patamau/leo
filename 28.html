@@ -10,12 +10,32 @@
 
 	function drag(ev) {
 		ev.dataTransfer.setData("text", ev.target.id);
-		ev.target.style.backgroundColor = 'white';
-		ev.target.parentElement.style.backgroundColor = 'lightgrey';
+		ev.dataTransfer.setData("source", ev.srcElement.parentElement.parentElement.id);
+		console.log("source: "+ev.srcElement.parentElement.parentElement.id);
+	}
+	
+	function validate(element, datacheck){
+		var children = Array.from(element.childNodes);
+		var datacheck = '';
+		var valid = true;
+		for(child in children){
+			if(children[child].nodeName=='DIV'){
+				if(datacheck === ''){
+					datacheck = children[child].id.slice(-1);
+				} else if(children[child].id.slice(-1) != datacheck){
+					valid = false;
+					break;
+				}
+			}
+		}
+		if(valid){
+			element.style.backgroundColor = 'green';
+		}else{
+			element.style.backgroundColor = 'red';
+		}
 	}
 
 	function drop(ev, check) {
-		console.log(ev.target.tagName);
 		var target = ev.target;
 		if(target.tagName != 'TD'){
 			var parent = target.parentElement;
@@ -30,15 +50,17 @@
 		}
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
-		console.log(data);
+		var source = ev.dataTransfer.getData("source");
+		console.log("source drop: "+source);
 		target.appendChild(document.getElementById(data));
+		validate(target);
+		validate(document.getElementById(source));
 	}
 	</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <script src="js/bootstrap.min.js"></script>
 	<style>
 	html, body{
 		height: 100%
@@ -67,6 +89,7 @@
 	}
 	table.grid{
 		margin: auto;
+		width: 70%;
 	}
 	button.btn-forward{
 		width: 25%;
@@ -90,15 +113,6 @@
 	</style>
 </head>
 <body>
-	<script>
-		function validate(component, valid){
-			if(valid){
-				component.innerHTML = '<i class="fa fa-check fa-2x valid"></i>';
-			}else{
-				component.innerHTML = '<i class="fa fa-times fa-2x wrong"></i>';
-			}
-		}
-	</script>
 	<table style="margin: auto" width="90%" height="100%">
 		<tr>
 			<td>
@@ -113,19 +127,19 @@
 				<table class="grid">
 					<tr>
 						<td class="cell align-bottom">
-							<h1>GRUPPO 1</h1>
+							<h4>GRUPPO 1</h4>
 						</td>
 						<td/>
 						<td class="cell align-bottom">
-							<h1>GRUPPO 2</h1>
+							<h4>GRUPPO 2</h4>
 						</td>
 						<td/>
 						<td class="cell align-bottom">
-							<h1>GRUPPO 3</h1>
+							<h4>GRUPPO 3</h4>
 						</td>
 						<td/>
 						<td class="cell align-bottom">
-							<h1>GRUPPO 4</h1>
+							<h4>GRUPPO 4</h4>
 						</td>
 					</tr>
 					<tr>
@@ -150,56 +164,56 @@
 					</tr>
 					<tr>
 						<td class="cell">
-							<div id="drag1" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/triangolo_giallo.jpg" id="drag1"/></div>
+							<div id="drag1-t" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/triangolo_giallo.jpg" id="drag1-t"/></div>
 						</td>
 						<td/>
 						<td class="cell">
-							<div id="drag2" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/triangolo_arancione.jpg" id="drag2"/></div>
+							<div id="drag2-t" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/triangolo_arancione.jpg" id="drag2-t"/></div>
 						</td>
 						<td/>
 						<td/>
 						<td/>
 						<td class="cell">
-							<div id="drag3" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/rettangolo_azzurro.jpg" id="drag3"/></div>
+							<div id="drag3-r" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/rettangolo_azzurro.jpg" id="drag3-r"/></div>
 						</td>
 					</tr>
 					<tr>
-						<td style="width: 30%" class="cell">
-							<div id="drag4" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/triangolo_rosa.jpg" id="drag4"/></div>
+						<td class="cell">
+							<div id="drag4-t" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/triangolo_rosa.jpg" id="drag4-t"/></div>
 						</td>
 						<td/>
 						<td/>
 						<td/>
-						<td  style="width: 30%" class="cell">
-							<div id="drag5" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/rettangolo_blu.jpg" id="drag5"/></div>
+						<td class="cell">
+							<div id="drag5-r" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/rettangolo_blu.jpg" id="drag5-r"/></div>
 						</td>
 						<td/>
-						<td style="width: 30%" class="cell">
-							<div id="drag6" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/cerchio_rosso.jpg" id="drag6"/></div>
+						<td class="cell">
+							<div id="drag6-c" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/cerchio_rosso.jpg" id="drag6-c"/></div>
 						</td>
 					</tr>
 					<tr>
 						<td/>
 						<td/>
-						<td  style="width: 30%" class="cell">
-							<div id="drag7" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/quadrato_grande.jpg" id="drag7"/></div>
+						<td class="cell">
+							<div id="drag7-q" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/quadrato_grande.jpg" id="drag7-q"/></div>
 						</td>
 						<td/>
-						<td style="width: 30%" class="cell">
-							<div id="drag8" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/quadrato_piccolo.jpg" id="drag8"/></div>
+						<td class="cell">
+							<div id="drag8-q" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/quadrato_piccolo.jpg" id="drag8-q"/></div>
 						</td>
 						<td/>
-						<td  style="width: 30%" class="cell">
-							<div id="drag9" class="draggable" draggable="true"
-ondragstart="drag(event)" ><img src="assets/images/quadrato_verde.jpg" id="drag9"/></div>
+						<td class="cell">
+							<div id="drag9-q" class="draggable" draggable="true"
+ondragstart="drag(event)" ><img src="assets/images/quadrato_verde.jpg" id="drag9-q"/></div>
 						</td>
 					</tr>
 				</table>

@@ -13,7 +13,6 @@
 	}
 
 	function drop(ev, check) {
-		console.log(ev.target.tagName);
 		var target = ev.target;
 		if(target.tagName != 'TD'){
 			var parent = target.parentElement;
@@ -28,7 +27,6 @@
 		}
 		ev.preventDefault();
 		var data = ev.dataTransfer.getData("text");
-		console.log(data);
 		target.innerHTML='';
 		target.appendChild(document.getElementById(data).cloneNode(true));
 	}
